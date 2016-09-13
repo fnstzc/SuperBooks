@@ -1,0 +1,26 @@
+<%@ page contentType="text/html;charset=gb2312" %>
+<%@ include file="incdb.jsp"%>
+<%@ include file="sessionadmin.jsp"%>
+<%int id = Integer.parseInt(request.getParameter("id"));
+	PayControl paycontrol= new PayControl();
+	paycontrol.setId(id);
+	paycontrol.delpay();
+%>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+<META HTTP-EQUIV="Expires" CONTENT="0">
+<meta HTTP-EQUIV=REFRESH CONTENT='0; URL=pay_manage.jsp'>
+<title>财务管理系统</title>
+<link rel="stylesheet" href="images/css.css" type="text/css" media="screen">
+</head>
+<body>
+	<span id=yu></span><a href=javascript:countDown></a>
+	<script>
+	function 
+	countDown(secs){yu.innerText=secs;if(--secs>0)setTimeout("countDown("+secs+")",1000);}countDown(0);
+	</script>
+</body>
+</html>
