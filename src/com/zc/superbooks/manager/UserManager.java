@@ -12,10 +12,8 @@ public class UserManager {
 
 	public String checkUser (String name) {
 		SqlSession session = MybatisUtil.getSqlSession();
-		System.out.println(name);
 		UserDao userDao = session.getMapper(UserDao.class);
 		User user = userDao.getPasswordByName(name);
-		System.out.println(user.getPassword());
 		session.close();
 		if (user.getPassword().equals("root")) {
 			return "success";

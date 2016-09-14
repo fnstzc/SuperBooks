@@ -27,8 +27,8 @@
 						<tr align="center">
 							<td height="35" colspan="3">
 								<div align="center">
-									用户名：<input name=name class="s01" size=16 maxLength=16><br>
-									密&nbsp;码：&nbsp;<input name=password type=password class="s01" size=16
+									用户名：<input name=name class="s01" size=16 maxLength=20><br>
+									密&nbsp;码：<input name=password type=password class="s01" size=16
 										maxLength=20>
 								</div>
 							</td>

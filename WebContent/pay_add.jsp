@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,6 +9,7 @@
 <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
 <meta http-equiv="refresh" content="60*30">
 <link rel="stylesheet" href="css/css.css" type="text/css" media="screen">
+<script type="text/javascript" src="laydate/laydate.js"></script>
 <script language="JavaScript">
 <!--
 function change(obj,i) {
@@ -56,9 +57,8 @@ if (theForm.project.value == ""){
 				<td>姓名:<input type="text" name="name" /></td>
 			</tr>
 			<tr>
-				<td class=forumrow>日期： <input name="time" type="text"
-					id="addtime" size="12" maxlength="12" readonly /> <input
-					onclick="popUpCalendar(this, form1.addtime, 'yyyy-mm-dd')"
+				<td class=forumrow>日期：  
+					<input onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"
 					type="button" value="请选择日期" />
 				</td>
 			</tr>

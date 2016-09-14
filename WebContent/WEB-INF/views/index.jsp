@@ -1,18 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
 <STYLE type=text/css>
 BODY {
-	SCROLLBAR-FACE-COLOR: #799ae1; BACKGROUND: #799ae1; MARGIN: 0px; FONT: 12px 宋体; SCROLLBAR-HIGHLIGHT-COLOR: #799ae1; SCROLLBAR-SHADOW-COLOR: #799ae1; SCROLLBAR-3DLIGHT-COLOR: #799ae1; SCROLLBAR-ARROW-COLOR: #ffffff; SCROLLBAR-TRACK-COLOR: #aabfec; SCROLLBAR-DARKSHADOW-COLOR: #799ae1
+	SCROLLBAR-FACE-COLOR: #799ae1; BACKGROUND: #c7d3f7; MARGIN: 0px; FONT: 12px 宋体; SCROLLBAR-HIGHLIGHT-COLOR: #799ae1; SCROLLBAR-SHADOW-COLOR: #799ae1; SCROLLBAR-3DLIGHT-COLOR: #799ae1; SCROLLBAR-ARROW-COLOR: #ffffff; SCROLLBAR-TRACK-COLOR: #aabfec; SCROLLBAR-DARKSHADOW-COLOR: #799ae1
 }
 TABLE {
 	BORDER-RIGHT: 0px; BORDER-TOP: 0px; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px
 }
 TD {
-	FONT: 12px 宋体
+	FONT: 18px 宋体;
+	background-size:100%
 }
 IMG {
 	BORDER-RIGHT: 0px; BORDER-TOP: 0px; VERTICAL-ALIGN: bottom; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px
@@ -22,6 +24,19 @@ A {
 }
 A:hover {
 	COLOR: #428eff; TEXT-DECORATION: none
+}
+h1 {
+	color: #075BB7;
+}
+.div_left {
+	float:left;
+	display:inline;
+	margin-left: 90px; 
+}
+.div_right {
+	float:right;
+	display:inline;
+	margin-right: 90px; 
 }
 .sec_menu {
 	BORDER-RIGHT: white 1px solid; BACKGROUND: #d6dff7; OVERFLOW: hidden; BORDER-LEFT: white 1px solid; BORDER-BOTTOM: white 1px solid
@@ -38,6 +53,7 @@ A:hover {
 .menu_title2 SPAN {
 	FONT-WEIGHT: bold; LEFT: 8px; COLOR: #428eff; POSITION: relative; TOP: 2px
 }
+
 </STYLE>
 
 <SCRIPT language=javascript1.2>
@@ -58,40 +74,39 @@ eval("submenu" + sid + ".style.display=\"none\";");
 </head>
 <title>家庭财务管理系统</title>
 <body>
-	<table>
-		<tr>
-			<td>
-				<TABLE cellSpacing=0 cellPadding=0 width="100%" align=left border=0>
+	<div><h1>欢迎使用SuperBooks</h1><br><hr></div>
+	<div class="div_left">
+				<TABLE cellSpacing=0 cellPadding=0 width="100%" align=left border=0 >
 					<TR>
 						<TD vAlign=top>
-							<TABLE cellSpacing=0 cellPadding=0 width=158 align=center>
+							<TABLE cellSpacing=0 cellPadding=0 width=180 align=center>
 								<TR>
 									<TD vAlign=bottom height=42><IMG height=38
-										src="images/title.gif" width=158></TD>
+										src="images/title.gif" width="180"></TD>
 								</TR>
 							</TABLE>
-							<TABLE cellSpacing=0 cellPadding=0 width=158 align=center>
+							<TABLE cellSpacing=0 cellPadding=0 width="180" align=center>
 								<TR>
 									<TD class=menu_title
 										onmouseover="this.className='menu_title2';"
 										onmouseout="this.className='menu_title';"
-										background=images/title_bg_quit.gif height=25><SPAN><A
+										background=images/title_bg_quit.gif height=25 width="180"><SPAN><A
 											href="main.jsp"><B>管理首页</B></A> | <A href="logout.jsp"
 											target=_top><B>退出</B></A></SPAN></TD>
 								</TR>
-							</TABLE>&nbsp;
-							<TABLE cellSpacing=0 cellPadding=0 width=158 align=center>
+							</TABLE>
+							<TABLE cellSpacing=0 cellPadding=0 width="180" align=center>
 								<TR>
 									<TD class=menu_title id=menuTitle1
 										onmouseover="this.className='menu_title2';"
 										style="CURSOR: hand" onclick=showsubmenu(0)
 										onmouseout="this.className='menu_title';"
-										background=images/admin_left_1.gif height=25><SPAN>资金管理</SPAN>
+										background=images/admin_left_1.gif height=25 width="180"><SPAN>资金管理</SPAN>
 									</TD>
 								</TR>
 								<TR>
-									<TD id=submenu0 style="DISPLAY: none">
-										<DIV class=sec_menu style="WIDTH: 158px">
+									<TD id=submenu0 style="DISPLAY: ">
+										<DIV class=sec_menu style="WIDTH: 180px">
 											<TABLE cellSpacing=0 cellPadding=0 width=150 align=center>
 												<TR>
 													<TD height=5></TD>
@@ -114,16 +129,16 @@ eval("submenu" + sid + ".style.display=\"none\";");
 												<TR>
 													<TD height=20><IMG height=20 alt=""
 														src="images/bullet.gif" width=15 border=0><a
-														href="paytype_manage.jsp"></a>资金分布</TD>
+														href="paytype_manage.jsp">资金分布</a></TD>
 												</TR>
 												<TR>
 													<TD height=20><IMG height=20 alt=""
-														src="images/bullet.gif" width=15 border=0><A
-														href="paytype_add.jsp"></A>家庭总资产</TD>
+														src="images/bullet.gif" width=15 border=0><a
+														href="paytype_add.jsp"></a></TD>
 												</TR>
 											</TABLE>
 										</DIV>
-										<DIV style="WIDTH: 158px">
+										<DIV style="WIDTH: 180px">
 											<TABLE cellSpacing=0 cellPadding=0 width=135 align=center>
 												<TR>
 													<TD height=20></TD>
@@ -133,7 +148,7 @@ eval("submenu" + sid + ".style.display=\"none\";");
 									</TD>
 								</TR>
 							</TABLE>
-							<TABLE cellSpacing=0 cellPadding=0 width=158 align=center>
+							<TABLE cellSpacing=0 cellPadding=0 width="180px" align=center>
 								<TR>
 									<TD class=menu_title id=menuTitle1
 										onmouseover="this.className='menu_title2';"
@@ -143,8 +158,8 @@ eval("submenu" + sid + ".style.display=\"none\";");
 									</TD>
 								</TR>
 								<TR>
-									<TD id=submenu1 style="DISPLAY: none">
-										<DIV class=sec_menu style="WIDTH: 158px">
+									<TD id=submenu1 style="DISPLAY:">
+										<DIV class=sec_menu style="WIDTH: 180px">
 											<TABLE cellSpacing=0 cellPadding=0 width=150 align=center>
 												<TR>
 													<TD height=5></TD>
@@ -156,7 +171,7 @@ eval("submenu" + sid + ".style.display=\"none\";");
 												</TR>
 											</TABLE>
 										</DIV>
-										<DIV style="WIDTH: 158px">
+										<DIV style="WIDTH: 180px">
 											<TABLE cellSpacing=0 cellPadding=0 width=135 align=center>
 												<TR>
 													<TD height=20></TD>
@@ -166,7 +181,7 @@ eval("submenu" + sid + ".style.display=\"none\";");
 									</TD>
 								</TR>
 							</TABLE>
-							<TABLE cellSpacing=0 cellPadding=0 width=158 align=center>
+							<TABLE cellSpacing=0 cellPadding=0 width="180" align=center>
 								<TR>
 									<TD class=menu_title id=menuTitle1
 										onmouseover="this.className='menu_title2';"
@@ -176,8 +191,8 @@ eval("submenu" + sid + ".style.display=\"none\";");
 									</TD>
 								</TR>
 								<TR>
-									<TD id=submenu2 style="DISPLAY: none">
-										<DIV class=sec_menu style="WIDTH: 158px">
+									<TD id=submenu2 style="DISPLAY: ">
+										<DIV class=sec_menu style="WIDTH: 180px">
 											<TABLE cellSpacing=0 cellPadding=0 width=150 align=center>
 												<TR>
 													<TD height=5></TD>
@@ -195,7 +210,7 @@ eval("submenu" + sid + ".style.display=\"none\";");
 											</TABLE>
 										</DIV>
 										<DIV style="WIDTH: 158px">
-											<TABLE cellSpacing=0 cellPadding=0 width=135 align=center>
+											<TABLE cellSpacing=0 cellPadding=0 width=180 align=center>
 												<TR>
 													<TD height=20></TD>
 												</TR>
@@ -204,7 +219,7 @@ eval("submenu" + sid + ".style.display=\"none\";");
 									</TD>
 								</TR>
 							</TABLE>
-							<TABLE cellSpacing=0 cellPadding=0 width=158 align=center>
+							<TABLE cellSpacing=0 cellPadding=0 width="180" align=center>
 								<TR>
 									<TD class=menu_title id=menuTitle1
 										onmouseover="this.className='menu_title2';"
@@ -214,9 +229,9 @@ eval("submenu" + sid + ".style.display=\"none\";");
 									</TD>
 								</TR>
 								<TR>
-									<TD id=submenu3 style="DISPLAY: none"><DIV class=sec_menu
-											style="WIDTH: 158px">
-											<TABLE cellSpacing=0 cellPadding=0 width=150 align=center>
+									<TD>
+										<DIV class=sec_menu style="WIDTH: 180px">
+											<TABLE cellSpacing=0 cellPadding=0 width=180 align=center>
 												<TR>
 													<TD height=5></TD>
 												</TR>
@@ -238,7 +253,7 @@ eval("submenu" + sid + ".style.display=\"none\";");
 											</TABLE>
 										</DIV>
 										<DIV style="WIDTH: 158px">
-											<TABLE cellSpacing=0 cellPadding=0 width=135 align=center>
+											<TABLE cellSpacing=0 cellPadding=0 width=180 align=center>
 												<TR>
 													<TD height=20></TD>
 												</TR>
@@ -249,14 +264,18 @@ eval("submenu" + sid + ".style.display=\"none\";");
 						</TD>
 					</TR>
 				</TABLE>
-			</td>
-			<td>
-				<table>
-					<tr><td>姓名</td><td>身份</td><td>日期</td><td>消费地点</td><td>消费方式</td><td>消费金额</td></tr>
-					
+			</div>
+			<div class="div_right">
+				<table cellpadding="0" cellspacing="0" border="10" width="800" height="600">
+					<tr><td style="font-size: 16px;font: bolder; padding-left: 20px" background="images/bullet.gif" colspan="6" align="left">近期消費記錄</td></tr>
+					<tr style="font-style: italic; font-size: 14px; font-size: 16px"><td>姓名</td><td>身份</td><td>日期</td><td>消费地点</td><td>消费方式</td><td>消费金额</td></tr>
+					<tr><td>zhangcheng</td><td>baba</td><td>20160914</td><td>xinjiekou</td><td>aplia</td><td>500</td></tr>
+					<tr><td>zhangcheng</td><td>baba</td><td>20160914</td><td>xinjiekou</td><td>aplia</td><td>500</td></tr>
+					<tr><td>zhangcheng</td><td>baba</td><td>20160914</td><td>xinjiekou</td><td>aplia</td><td>500</td></tr>
+					<tr><td>zhangcheng</td><td>baba</td><td>20160914</td><td>xinjiekou</td><td>aplia</td><td>500</td></tr>
+					<tr><td>zhangcheng</td><td>baba</td><td>20160914</td><td>xinjiekou</td><td>aplia</td><td>500</td></tr>
+					<tr><td>zhangcheng</td><td>baba</td><td>20160914</td><td>xinjiekou</td><td>aplia</td><td>500</td></tr>
 				</table>
-			</td>
-		</tr>
-	</table>
+			</div>
 </body>
 </html>
