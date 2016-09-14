@@ -21,4 +21,17 @@ public class UserManager {
 			return "failed";
 		}
 	}
+	public String addConsume(String name, String identity, String time, String place, 
+			String costWay, String cost, String desc) {
+		SqlSession session = MybatisUtil.getSqlSession();
+		UserDao userDao = session.getMapper(UserDao.class);
+		User user = userDao.getPasswordByName(name);
+		session.close();
+		if (user.getPassword().equals("root")) {
+			return "success";
+		} else {
+			return "failed";
+		}
+		return null;
+	}
 }

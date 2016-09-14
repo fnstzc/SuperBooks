@@ -7,6 +7,7 @@ public class Consume {
 	private String place;
 	private String costWay;
 	private String cost;
+	private String desc;
 	private String isNeed;
 	
 	public String getName() {
@@ -51,5 +52,11 @@ public class Consume {
 	}
 	public void setCost(String cost) {
 		this.cost = cost;
+	}
+	public String getDesc() {
+		return desc;
+	}
+	public void setDesc(String desc) {
+		this.desc = desc;
 	}
 }

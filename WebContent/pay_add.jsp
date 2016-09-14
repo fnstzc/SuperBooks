@@ -48,7 +48,7 @@ if (theForm.project.value == ""){
 
 <body text="#000000">
 	<p>&nbsp;</p><br><br><br>
-	<form action="pay_save.jsp" method="post" onSubmit="return chk(this)">
+	<form action="addConsume" method="post" onSubmit="return chk(this)">
 		<table cellpadding="2" cellspacing="1" border="0" width="400" height="400" class="tableBorder" align=center>
 			<tr>
 				<th height=25 colspan=5 align="center">新增消费记录</th>
@@ -59,12 +59,12 @@ if (theForm.project.value == ""){
 			<tr>
 				<td class=forumrow>日期：  
 					<input onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"
-					type="button" value="请选择日期" />
+					type="button" value="请选择日期" name="time" />
 				</td>
 			</tr>
 			<tr bgcolor=ffffff>
 				<td class=forumrow>身份：
-					<select name="payerid" id="payerid">
+					<select name="identity">
 						<option>请选择身份</option>
 						<option>爸爸</option>
 						<option>妈妈</option>
@@ -91,7 +91,7 @@ if (theForm.project.value == ""){
 			</tr>
 			<tr>
 				<td rowspan="2" class=forumrow>
-					具体说明：<textarea name="message" cols="50" rows="8" id="message"></textarea>
+					具体说明：<textarea name="desc" cols="50" rows="8" id="message"></textarea>
 				</td>
 			</tr>
 			<tr>

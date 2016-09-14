@@ -12,4 +12,10 @@ public class UserService {
 		String result = userManager.checkUser(name);
 		return result;
 	}
+	
+	public String addConsume(String name, String identity, String time, String place, 
+			String costWay, String cost, String desc) {
+		String result = userManager.addConsume(name, identity, time, place, costWay, cost, desc);
+		return result;
+	}
 }

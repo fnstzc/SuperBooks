@@ -22,7 +22,7 @@ public class SuperBooksController {
 	}
 	
 	@RequestMapping("/loginCL")
-	public String loginCL(@RequestParam("name") String name, @RequestParam("password") String password,Model model) {
+	public String loginCL(String name,String password,Model model) {
 		String result = userService.checkUser(name);
 		if (result.equals("success")) {
 			model.addAttribute("status", "success");
@@ -31,5 +31,13 @@ public class SuperBooksController {
 			model.addAttribute("status", "failed");
 			return "login";
 		}
+	}
+	
+	@RequestMapping("/addConsume")
+	public String addConsume(String name, String identity, String time, String place, 
+								String costWay, String cost, String desc, Model model) {
+		String result = userService.addConsume(name, identity, time, place, costWay, cost, desc);
+		
+		return null;
 	}
 }
