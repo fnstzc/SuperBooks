@@ -17,6 +17,7 @@ package com.zc.superbooks.controller;
 	import java.util.Date;
 	import java.util.Enumeration;
 	import java.util.HashMap;
+import java.util.Iterator;
 	import java.util.LinkedList;
 	import java.util.List;
 	import java.util.Map;
@@ -54,7 +55,7 @@ package com.zc.superbooks.controller;
 	import com.fujitsu.proasq.dita.db.exception.EntityIsUsingException;
 	import com.fujitsu.proasq.dita.db.exception.EntityNotFoundException;
 	import com.fujitsu.proasq.dita.db.jpa.handler.ActionHandler;
-	import com.fujitsu.proasq.dita.db.jpa.handler.ResourceHandler;
+import com.fujitsu.proasq.dita.db.jpa.handler.ResourceHandler;
 
 	public class ResourceManager {
 		public static final String RESOURCE_SUFFIX = ".zip";
@@ -568,37 +569,57 @@ package com.zc.superbooks.controller;
 			}
 		}
 
-		public String getCoverAndFilterData(File zipFile, Cover cover, List<Filter> filter, String filterFileName,String coverFileName,
+		public void getCoverAndFilterData(File zipFile, Cover cover, List<Filter> filterList, String filterFileName,String coverFileName,
 				String targetFolder) throws DataMgrResourceFileNotFound,
 				FileNotFoundException, IOException {
+			
 			StringReader coverStringReader = null;
 			StringReader filterStringReader = null;
+			
 			List<Path> filePaths = new ArrayList<Path>();
-			filePaths.add(Paths.get(targetFolder, coverFileName).normalize());
-			filePaths.add(Paths.get(targetFolder,filterFileName).normalize());
+			
+			Path coverFilePath = Paths.get(targetFolder, coverFileName).normalize();
+			Path filterFilePath = Paths.get(targetFolder,filterFileName).normalize();
+			
+			filePaths.add(coverFilePath);
+			filePaths.add(filterFilePath);
+			
 			try {
 				HashMap<String, String> fileDataStrMap = readCoverAndFilterFileDataFromZip(zipFile, filePaths);
-				String coverDataStr = fileDataStrMap.get("coverDataStr");
-				String filterDataStr = fileDataStrMap.get("filterDataStr");
+				String coverDataStr = fileDataStrMap.get(coverFilePath.getFileName());
+				String filterDataStr = fileDataStrMap.get(filterFilePath.getFileName());
+				
 				if (coverDataStr.isEmpty()) {
 					throw new DataMgrResourceFileNotFound(coverFileName);
 				}
-				if ()
-				stringReader = new StringReader(readFileDataFromZip);
-				CoverToXml coverData = JAXB.unmarshal(stringReader, CoverToXml.class);
-				return new Cover(coverData);
+				if (filterDataStr.isEmpty()) {
+					throw new DataMgrResourceFileNotFound(filterFileName);
+				}
+				
+				coverStringReader = new StringReader(coverDataStr);
+				CoverToXml coverData = JAXB.unmarshal(coverStringReader, CoverToXml.class);
+				cover = new Cover(coverData);
+				
+				filterStringReader = new StringReader(filterDataStr);
+				ValToXml valData = JAXB.unmarshal(filterStringReader, ValToXml.class);
+				for (Prop filterData : valData.getProp()) {
+					filterList.add(new Filter(filterData));
+				}
 			} finally {
-				if (stringReader != null) {
-					stringReader.close();
+				if (coverStringReader != null) {
+					coverStringReader.close();
+				}
+				if (filterStringReader != null) {
+					filterStringReader.close();
 				}
 			}
-			return null;
 		}
 
 		private HashMap<String, String> readCoverAndFilterFileDataFromZip(File zipFile, List<Path> filePaths) throws FileNotFoundException, IOException {
 			HashMap<String, String> fileData = new HashMap<String, String>();
 			StringBuilder coverDataStr = new StringBuilder();
 			StringBuilder filterDataStr = new StringBuilder();
+			StringBuilder dataStr = new StringBuilder();
 			String readed;
 			ZipInputStream zipInputStream = null;
 			BufferedReader bufferReader = null;
@@ -612,34 +633,24 @@ package com.zc.superbooks.controller;
 				while ((zipEntry = zipInputStream.getNextEntry()) != null) {
 					String name = zipEntry.getName();
 					Path zipContentFile = Paths.get(name);
-					if (zipContentFile.compareTo(filePaths.get(0)) == 0) {
-						while ((readed = bufferReader.readLine()) != null) {
-							coverDataStr.append(readed).append("\n");
-						}
-						filePaths.remove(0);
-						
-					}
-					if (zipContentFile.compareTo(filePaths.get(1)) == 0) {
-						while ((readed = bufferReader.readLine()) != null) {
-							filterDataStr.append(readed).append("\n");
-						}
-						filePaths.remove(1);
-					}
-					for (Path path : filePaths) {
-						if (zipContentFile.compareTo(path) == 0) {
-							if (path.ge)
+
+					Iterator<Path> iterator = filePaths.iterator();
+					while(iterator.hasNext()){
+			            Path path = iterator.next();
+			            if (zipContentFile.compareTo(path) == 0) {
 							while ((readed = bufferReader.readLine()) != null) {
-								coverDataStr.append(readed).append("\n");
+								dataStr.append(readed).append("\n");
 							}
-							filePaths.remove(0);
-							
+							fileData.put(path.getFileName().toString(), dataStr.toString());
+							iterator.remove();
+							dataStr.delete(0, dataStr.length());
 						}
 					}
-					
+					if (filePaths.isEmpty()) {
+						break;
+					}
 					zipInputStream.closeEntry();
 				}
-				fileData.put("coverDataStr", coverDataStr.toString());
-				fileData.put("filterDataStr", filterDataStr.toString());
 			} finally {
 				if (bufferReader != null) {
 					bufferReader.close();
