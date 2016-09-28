@@ -18,5 +18,6 @@
 </environments>
 	<mappers>
          <mapper resource="com/zc/superbooks/mapping/userMapper.xml"/>
+         <mapper resource="com/zc/superbooks/mapping/consumeMapper.xml"/>
     </mappers>
 </configuration>

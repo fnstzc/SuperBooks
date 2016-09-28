@@ -11,7 +11,6 @@
 <link rel="stylesheet" href="css/css.css" type="text/css" media="screen">
 <script type="text/javascript" src="laydate/laydate.js"></script>
 <script language="JavaScript">
-<!--
 function change(obj,i) {
 he=parseInt(obj.style.height);
 if (he>=80&&he<=400)
@@ -42,7 +41,6 @@ if (theForm.project.value == ""){
                 return (false);
         } 
 }
-//-->
 </script>
 </head>
 
@@ -91,7 +89,7 @@ if (theForm.project.value == ""){
 			</tr>
 			<tr>
 				<td rowspan="2" class=forumrow>
-					具体说明：<textarea name="desc" cols="50" rows="8" id="message"></textarea>
+					具体说明：<textarea name="description" cols="50" rows="8" id="message"></textarea>
 				</td>
 			</tr>
 			<tr>
