@@ -8,9 +8,10 @@ import com.zc.superbooks.dao.UserDao;
 import com.zc.superbooks.entity.User;
 import com.zc.superbooks.util.MybatisUtil;
 
+@Service
 public class UserManager {
 
-	public String checkUser (String name) {
+	public String checkUserName (String name) {
 		SqlSession session = MybatisUtil.getSqlSession();
 		UserDao userDao = session.getMapper(UserDao.class);
 		User user = userDao.getPasswordByName(name);
@@ -32,6 +33,5 @@ public class UserManager {
 		} else {
 			return "failed";
 		}
-		return null;
 	}
 }

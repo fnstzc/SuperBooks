@@ -1,6 +1,7 @@
 package com.zc.superbooks.entity;
 
 public class Distribution {
+	private String name;
 	private String total;
 	private String crash;
 	private String alipay;
@@ -8,7 +9,14 @@ public class Distribution {
 	private String qqWallet;
 	private String weixinWallet;
 	private String financialProducts;
+	private String date;
 	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public String getTotal() {
 		return total;
 	}
@@ -50,5 +58,11 @@ public class Distribution {
 	}
 	public void setFinancialProducts(String financialProducts) {
 		this.financialProducts = financialProducts;
+	}
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
 	}
 }

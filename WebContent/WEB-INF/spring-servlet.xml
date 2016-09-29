@@ -12,6 +12,7 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
 	<context:component-scan base-package="com.zc.superbooks.controller" />
 	<context:component-scan base-package="com.zc.superbooks.service" />
+	<context:component-scan base-package="com.zc.superbooks.manager" />
 
 	<mvc:annotation-driven/>
 

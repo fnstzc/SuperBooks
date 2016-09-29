@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zc.superbooks.dao.DistributionDao">
+    <select id="getAllDistribution" resultType="Distribution">
+        select * from Distribution
+    </select>
+    <select id="findDistributionByName" resultType="Distribution">
+        select * from distribution where name = #{name} order by date
+    </select>
+    <update id="updateDistribution">
+    	update 
+    </update>
+    <insert id="addDistribution" parameterType="String" 
+        useGeneratedKeys="true" keyProperty="id">
+    	insert into distribution(name,total,crash,alipay,card,qqWallet,
+    		weixinWallet,financialProducts,date) values (#{name},#{total},#{crash},
+    			#{alipay},#{card},#{qqWallet},#{weixinWallet},#{financialProducts},#{date})
+    </insert>
+</mapper>

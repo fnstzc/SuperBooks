@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zc.superbooks.dao.TotalFortuneDao">
+    <select id="getAllTotalFortune" resultType="TotalFortune">
+        select * from totalfortune
+    </select>
+    <select id="findTotalFortuneByDate" resultType="TotalFortune">
+        select * from TotalFortune where date = #{date}
+    </select>
+    <insert id="addTotalFortune" parameterType="String" 
+        useGeneratedKeys="true" keyProperty="id">
+    	insert into totalfortune(totalCost,totalIncome,pastCost,pastIncome,rate,date) values (#{totalCost},#{totalIncome},#{pastCost},
+    			#{pastIncome},#{rate},#{date})
+    </insert>
+</mapper>

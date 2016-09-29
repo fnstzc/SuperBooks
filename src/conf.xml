@@ -3,6 +3,10 @@
 <configuration>
 <typeAliases>
 	<typeAlias alias="User" type="com.zc.superbooks.entity.User" />
+	<typeAlias alias="Consume" type="com.zc.superbooks.entity.Consume" />
+	<typeAlias alias="Income" type="com.zc.superbooks.entity.Income" />
+	<typeAlias alias="TotalFortune" type="com.zc.superbooks.entity.TotalFortune" />
+	<typeAlias alias="Distribution" type="com.zc.superbooks.entity.Distribution" />
 </typeAliases>
 <environments default="development">
 <environment id="development">
@@ -18,5 +22,8 @@
 </environments>
 	<mappers>
          <mapper resource="com/zc/superbooks/mapping/userMapper.xml"/>
+         <mapper resource="com/zc/superbooks/mapping/distributionMapper.xml"/>
+         <mapper resource="com/zc/superbooks/mapping/incomeMapper.xml"/>
+         <mapper resource="com/zc/superbooks/mapping/totalFortuneMapper.xml"/>
     </mappers>
 </configuration>

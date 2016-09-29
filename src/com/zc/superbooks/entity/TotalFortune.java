@@ -7,6 +7,7 @@ public class TotalFortune {
 	private String pastCost;
 	private String pastIncome;
 	private String rate;
+	private String date;
 	
 	public String getFortune() {
 		return fortune;
@@ -43,5 +44,11 @@ public class TotalFortune {
 	}
 	public void setRate(String rate) {
 		this.rate = rate;
+	}
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
 	}
 }

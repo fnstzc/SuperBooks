@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zc.superbooks.dao.IncomeDao">
+	<select id="getAllIncome" resultType="Income">
+		select * from income
+	</select>
+	<select id="findIncomeByName" resultType="Income">
+		select * from Income where name=#{name} order by date
+	</select>
+	<insert id="addIncome" parameterType="String" useGeneratedKeys="true" keyProperty="id" >
+		insert into Income(name,identity,time,incomeWay,fortune) values (#{name},#{identity},#{time},#{incomeWay},#{fortune})
+	</insert>
+</mapper>
