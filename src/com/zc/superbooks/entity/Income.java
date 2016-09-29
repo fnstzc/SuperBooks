@@ -3,7 +3,7 @@ package com.zc.superbooks.entity;
 public class Income {
 	private String name;
 	private String identity;
-	private String time;
+	private String date;
 	private String incomeWay;
 	private String fortune;
 	
@@ -19,12 +19,6 @@ public class Income {
 	public void setIdentity(String identity) {
 		this.identity = identity;
 	}
-	public String getTime() {
-		return time;
-	}
-	public void setTime(String time) {
-		this.time = time;
-	}
 	public String getIncomeWay() {
 		return incomeWay;
 	}
@@ -36,5 +30,11 @@ public class Income {
 	}
 	public void setFortune(String fortune) {
 		this.fortune = fortune;
+	}
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
 	}
 }

@@ -3,12 +3,13 @@ package com.zc.superbooks.entity;
 public class Consume {
 	private String name;
 	private String identity;
-	private String time;
+	private String date;
 	private String place;
 	private String costWay;
 	private String cost;
-	private String desc;
+	private String description;
 	private String isNeed;
+	
 	
 	public String getName() {
 		return name;
@@ -22,11 +23,11 @@ public class Consume {
 	public void setIdentity(String identity) {
 		this.identity = identity;
 	}
-	public String getTime() {
-		return time;
+	public String getDate() {
+		return date;
 	}
-	public void setTime(String time) {
-		this.time = time;
+	public void setDate(String date) {
+		this.date = date;
 	}
 	public String getPlace() {
 		return place;
@@ -53,10 +54,10 @@ public class Consume {
 	public void setCost(String cost) {
 		this.cost = cost;
 	}
-	public String getDesc() {
-		return desc;
+	public String getDescription() {
+		return description;
 	}
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }

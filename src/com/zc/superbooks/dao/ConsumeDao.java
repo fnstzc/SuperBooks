@@ -1,5 +1,10 @@
 package com.zc.superbooks.dao;
 
+import java.util.List;
+
+import com.zc.superbooks.entity.Consume;
+
 public interface ConsumeDao {
-	public void getAllConsume();
+	public List<Consume> getAllConsume();
+	public int addConsume(Consume consume);
 }

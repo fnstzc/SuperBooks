@@ -12,6 +12,8 @@ import com.zc.superbooks.entity.Distribution;
 import com.zc.superbooks.entity.Income;
 import com.zc.superbooks.entity.TotalFortune;
 import com.zc.superbooks.entity.User;
+import com.zc.superbooks.message.MessageCode;
+import com.zc.superbooks.service.ConsumeService;
 import com.zc.superbooks.service.DistributionService;
 import com.zc.superbooks.service.IncomeService;
 import com.zc.superbooks.service.TotalFortuneService;
@@ -21,6 +23,8 @@ import com.zc.superbooks.service.UserService;
 public class SuperBooksController {
 	@Autowired
 	UserService userService;
+	@Autowired
+	ConsumeService consumeService;
 	@Autowired
 	DistributionService distributionService;
 	@Autowired
@@ -45,12 +49,14 @@ public class SuperBooksController {
 		}
 	}
 	
-//	@RequestMapping("/addConsume")
-//	public String addConsume(Consume consume, Model model) {
-//		String result = userService.addConsume(name, identity, time, place, costWay, cost, desc);
-//		
-//		return null;
-//	}
+	@RequestMapping("/addConsume")
+	public String addConsume(Consume consume, Model model) {
+		String result = consumeService.addConsume(consume);
+		if (MessageCode.ADD_OK.equals(result)) {
+			return "pay_save";
+		}
+		return "pay_error";
+	}
 	
 	@RequestMapping("/getDistributionList")
 	public String getALLDistribution(Model model) {
