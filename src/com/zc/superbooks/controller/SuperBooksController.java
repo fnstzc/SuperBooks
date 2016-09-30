@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.zc.superbooks.entity.Consume;
 import com.zc.superbooks.entity.Distribution;
 import com.zc.superbooks.entity.Income;
-import com.zc.superbooks.entity.TotalFortune;
 import com.zc.superbooks.entity.User;
 import com.zc.superbooks.message.MessageCode;
 import com.zc.superbooks.service.ConsumeService;

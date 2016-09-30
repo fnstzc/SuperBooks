@@ -24,8 +24,8 @@ public class TotalFortuneService {
 		return TotalFortuneList;
 	}
 	
-	public String addTotalFortune(String fortune, String totalCost,String totalIncome, String pastCost,String pastIncome,String rate, String date) {
-		String result = totalFortuneManager.addTotalFortune(fortune, totalCost,totalIncome, pastCost, pastIncome,rate,date);
+	public String addTotalFortune(TotalFortune totalFortune) {
+		String result = totalFortuneManager.addTotalFortune(totalFortune);
 		return result;
 	}
 	

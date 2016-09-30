@@ -25,11 +25,11 @@ public class IncomeManager {
 		return IncomeList;
 	}
 	
-	public String addIncome(String name, String identity, String time, String incomeWay, String fortune) {
+	public String addIncome(Income income) {
 		int addResultNum = 0;
 		SqlSession session = MybatisUtil.getSqlSession();
 		IncomeDao incomeDao = session.getMapper(IncomeDao.class);
-		addResultNum = incomeDao.addIncome(name, identity, time, incomeWay, fortune);
+		addResultNum = incomeDao.addIncome(income);
 		session.commit();
 		session.close();
 		

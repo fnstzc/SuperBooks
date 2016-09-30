@@ -24,8 +24,8 @@ public class IncomeService {
 		return IncomeList;
 	}
 	
-	public String addIncome(String name, String identity, String time, String incomeWay, String fortune) {
-		String result = incomeManager.addIncome(name, identity, time, incomeWay, fortune);
+	public String addIncome(Income income) {
+		String result = incomeManager.addIncome(income);
 		return result;
 	}
 	

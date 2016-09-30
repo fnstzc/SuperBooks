@@ -7,8 +7,6 @@ import com.zc.superbooks.entity.TotalFortune;
 
 public interface TotalFortuneDao {
 	public List<TotalFortune> getAllTotalFortune();
-
-	public int addTotalFortune(String fortune, String totalCost,
-			String totalIncome, String pastCost, String pastIncome,
-			String rate, String date);
+	public int addTotalFortune(TotalFortune totalFortune);
+	public TotalFortune getUpToDateFortune();
 }

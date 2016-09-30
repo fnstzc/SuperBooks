@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.zc.superbooks.bean.ConsumeExecute;
 import com.zc.superbooks.dao.DistributionDao;
 import com.zc.superbooks.entity.Distribution;
 import com.zc.superbooks.manager.DistributionManager;
@@ -22,14 +23,18 @@ public class DistributionService {
 		return distributionList;
 	}
 	
-	public String addDistribution(String name, String total, String crash,String alipay,
-			String card, String qqWallet, String weixinWallet,String financialProducts,String date) {
-		String result = distributionManager.addDistribution(name, total, crash, alipay, card, qqWallet, weixinWallet, financialProducts, date);
+	public String addDistribution(Distribution distribution) {
+		String result = distributionManager.addDistribution(distribution);
 		return result;
 	}
 	
 	public Distribution findDistribution(String name) {
 		Distribution distribution = distributionManager.findDistribution(name);
+		return distribution;
+	}
+	
+	public Distribution findUpToDateDistribution(String name) {
+		Distribution distribution = distributionManager.findUpToDateDistributionByName(name);
 		return distribution;
 	}
 }

@@ -9,6 +9,9 @@
     <select id="findTotalFortuneByDate" resultType="TotalFortune">
         select * from TotalFortune where date = #{date}
     </select>
+    <select id="getUpToDateFortune" resultType="String">
+        select top 1 * from TotalFortune order by date
+    </select>
     <insert id="addTotalFortune" parameterType="String" 
         useGeneratedKeys="true" keyProperty="id">
     	insert into totalfortune(totalCost,totalIncome,pastCost,pastIncome,rate,date) values (#{totalCost},#{totalIncome},#{pastCost},

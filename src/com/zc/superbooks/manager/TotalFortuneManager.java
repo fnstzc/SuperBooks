@@ -26,11 +26,11 @@ public class TotalFortuneManager {
 		return TotalFortuneList;
 	}
 	
-	public String addTotalFortune(String fortune, String totalCost,String totalIncome, String pastCost,String pastIncome,String rate, String date) {
+	public String addTotalFortune(TotalFortune totalFortune) {
 		int addResultNum = 0;
 		SqlSession session = MybatisUtil.getSqlSession();
 		TotalFortuneDao TotalFortuneDao = session.getMapper(TotalFortuneDao.class);
-		addResultNum = TotalFortuneDao.addTotalFortune(fortune, totalCost,totalIncome, pastCost, pastIncome,rate,date);
+		addResultNum = TotalFortuneDao.addTotalFortune(totalFortune);
 		session.commit();
 		session.close();
 		
@@ -39,5 +39,14 @@ public class TotalFortuneManager {
 		} else {
 			return MessageCode.ADD_FAILED;
 		}
+	}
+	
+	public TotalFortune getUpToDateFortune() {
+		SqlSession session = MybatisUtil.getSqlSession();
+		TotalFortuneDao TotalFortuneDao = session.getMapper(TotalFortuneDao.class);
+		TotalFortune totalFortune = TotalFortuneDao.getUpToDateFortune();
+		session.close();
+		
+		return totalFortune;
 	}
 }

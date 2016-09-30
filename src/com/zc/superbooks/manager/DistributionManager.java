@@ -25,12 +25,11 @@ public class DistributionManager {
 		return distributionList;
 	}
 	
-	public String addDistribution(String name, String total, String crash,String alipay,
-			String card, String qqWallet, String weixinWallet,String financialProducts,String date) {
+	public String addDistribution(Distribution distribution) {
 		int addResultNum = 0;
 		SqlSession session = MybatisUtil.getSqlSession();
 		DistributionDao distributionDao = session.getMapper(DistributionDao.class);
-		addResultNum = distributionDao.addDistribution(name, total, crash, alipay, card, qqWallet, weixinWallet, financialProducts, date);
+		addResultNum = distributionDao.addDistribution(distribution);
 		session.commit();
 		session.close();
 		
@@ -49,6 +48,17 @@ public class DistributionManager {
 			return new Distribution();
 		}
 		
+		return distribution;
+	}
+	
+	public Distribution findUpToDateDistributionByName(String name) {
+		SqlSession session = MybatisUtil.getSqlSession();
+		DistributionDao distributionDao = session.getMapper(DistributionDao.class);
+		Distribution distribution = distributionDao.findUpToDateDistributionByName(name);
+		session.close();
+		if (distribution == null) {
+			return new Distribution();
+		}
 		return distribution;
 	}
 }

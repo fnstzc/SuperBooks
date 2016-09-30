@@ -9,9 +9,9 @@
     <select id="findDistributionByName" resultType="Distribution">
         select * from distribution where name = #{name} order by date
     </select>
-    <update id="updateDistribution">
-    	update 
-    </update>
+    <select id="findUpToDateDistributionByName" resultType="Distribution">
+        select top 1 * from distribution where name = #{name} order by date
+    </select>
     <insert id="addDistribution" parameterType="String" 
         useGeneratedKeys="true" keyProperty="id">
     	insert into distribution(name,total,crash,alipay,card,qqWallet,
