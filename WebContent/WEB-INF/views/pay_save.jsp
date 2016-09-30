@@ -1,28 +1,6 @@
-<%@ page contentType="text/html;charset=gb2312" %>
-<%@ include file="incdb.jsp"%>
-<%@ include file="sessionadmin.jsp"%>
-<%try{
-    //»ñÈ¡Êý¾Ý
-    int classid = Integer.parseInt(request.getParameter("classid"));
-	int payerid = Integer.parseInt(request.getParameter("payerid"));
-	String addtime = request.getParameter("addtime");
-	int paytypeid = Integer.parseInt(request.getParameter("paytypeid"));
-	int money = Integer.parseInt(request.getParameter("money"));
-	int inout = Integer.parseInt(request.getParameter("inout"));
-	String project = request.getParameter("project");
-	String message = request.getParameter("message");
-	//Ìí¼ÓÊý¾Ý
-	PayControl paycontrol= new PayControl();
-	paycontrol.setClassid(classid);
-	paycontrol.setPayerid(payerid);
-	paycontrol.setPaytypeid(paytypeid);
-	paycontrol.setMessage(message);
-	paycontrol.setMoney(money);
-	paycontrol.setAddtime(addtime);
-	paycontrol.setInout(inout);
-	paycontrol.setProject(project);
-	paycontrol.addpay();
-    %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
@@ -30,35 +8,20 @@
 <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
 <META HTTP-EQUIV="Expires" CONTENT="0">
 <meta HTTP-EQUIV=REFRESH CONTENT='4; URL=pay_manage.jsp'>
-<title>²ÆÎñ¹ÜÀíÏµÍ³</title>
+<title>SuperBooks</title>
 <link rel="stylesheet" href="images/css.css" type="text/css" media="screen">
 </head>
 <body topmargin=0>
-<TABLE width=400 border="0" align=center cellpadding=4 cellspacing=1 class="tableBorder">
-	<TR>
-	  <Th align=center class="whitetitle"><strong>·ÑÓÃÌí¼Ó³É¹¦</strong></Th>
-	</TR>
-	<TR><TD align=center><BR>
-	  ±¾Ò³Ãæ½«ÔÚ<b><span id=yu>3</span><a href=javascript:countDown></a></b>Ãëºó×Ô¶¯·µ»Ø·ÑÓÃ¹ÜÀíÒ³Ãæ£¬Äú¿ÉÒÔÑ¡ÔñÒÔÏÂ²Ù×÷£º<BR>
-	  <BR>
-	<li><a href="main.jsp">·µ»ØÊ×Ò³</a><br>
-	</li>
-	<br>
-	<li><a href='pay_add.jsp?inout=<%=inout%>'>¼ÌÐøÌí¼Ó·ÑÓÃ</a><br>
-	</li>
-	<br>
-	<li><a href="pay_manage.jsp">·µ»Ø·ÑÓÃ¹ÜÀíÒ³Ãæ</a><br>
-	  <br>
-	</li>
-	</TD></TR>
-</TABLE>
-
-	<script>
-	function 
-	countDown(secs){yu.innerText=secs;if(--secs>0)setTimeout("countDown("+secs+")",1000);}countDown(3);
-	</script>
-	<%
-	}
-	catch(Exception e){
-	out.println("´íÎóÐÅÏ¢:"+e.getMessage());
-	}%>
+	<TABLE width=400 border="0" align=center cellpadding=4 cellspacing=1 class="tableBorder">
+		<TR>
+			<Th align=center class="whitetitle"><strong>è´¹ç”¨æ·»åŠ æˆåŠŸ</strong></Th>
+		</TR>
+		<TR>
+			<TD align=center><BR> æœ¬é¡µé¢å°†åœ¨<b><span id=yu>3</span><a
+					href=javascript:countDown></a></b>ç§’åŽè‡ªåŠ¨è¿”å›žè´¹ç”¨ç®¡ç†é¡µé¢ï¼Œæ‚¨å¯ä»¥é€‰æ‹©ä»¥ä¸‹æ“ä½œï¼š<BR> <BR>
+				<br>
+				<li><a href="pay_add.jsp">ç»§ç»­æ–°å¢žæ”¯å‡º</a><br></li> <br>
+				<li><a href="index.jsp">è¿”å›žä¸»é¡µé¢</a><br> <br></li></TD>
+		</TR>
+	</TABLE>
+</body>
