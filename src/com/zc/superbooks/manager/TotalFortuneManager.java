@@ -41,10 +41,10 @@ public class TotalFortuneManager {
 		}
 	}
 	
-	public TotalFortune getUpToDateFortune() {
+	public TotalFortune findUpToDateTotalFortune() {
 		SqlSession session = MybatisUtil.getSqlSession();
 		TotalFortuneDao TotalFortuneDao = session.getMapper(TotalFortuneDao.class);
-		TotalFortune totalFortune = TotalFortuneDao.getUpToDateFortune();
+		TotalFortune totalFortune = TotalFortuneDao.findUpToDateTotalFortune();
 		session.close();
 		
 		return totalFortune;

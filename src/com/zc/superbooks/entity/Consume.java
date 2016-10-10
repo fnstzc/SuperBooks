@@ -7,6 +7,7 @@ public class Consume {
 	private String place;
 	private String costWay;
 	private String cost;
+	private String purpose;
 	private String description;
 	private String isNeed;
 	
@@ -59,5 +60,11 @@ public class Consume {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public String getPurpose() {
+		return purpose;
+	}
+	public void setPurpose(String purpose) {
+		this.purpose = purpose;
 	}
 }

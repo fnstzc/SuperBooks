@@ -23,7 +23,7 @@ public class ConsumeService {
 		String result = consumeManager.addConsume(consume);
 		if (MessageCode.ADD_OK.equals(result)) {
 			consumeExecute.updateDistribution(consume);
-			
+			consumeExecute.updateTotalFortune(consume);
 		}
 		return result;
 	}

@@ -7,7 +7,7 @@
         select * from Consume
     </select>
     <insert id="addConsume">
-		insert into consume(name,identity,time,place,costWay,cost,description) values (#{name},#{identity},
-			#{time},#{place},#{costWay},#{cost},#{description})
+		insert into consume(name,identity,time,place,costWay,cost,purpose,description) values (#{name},#{identity},
+			#{time},#{place},#{costWay},#{cost},#{purpose},#{description})
     </insert>
 </mapper>

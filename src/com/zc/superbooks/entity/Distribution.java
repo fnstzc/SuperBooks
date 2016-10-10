@@ -1,5 +1,7 @@
 package com.zc.superbooks.entity;
 
+
+//消费途径分布
 public class Distribution {
 	private String name;
 	private String total;

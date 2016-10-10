@@ -19,21 +19,49 @@ public class ConsumeExecute {
 	TotalFortuneManager totalFortuneManager;
 	
 	public void updateDistribution(Consume consume) {
-		Distribution distribution = new Distribution();
+		Distribution distribution = distributionManager.findUpToDateDistributionByName(consume.getName());
 		getNewDistribution(consume,distribution);
-		setConsumeInfoToNewDistribution(consume, distribution);
-		setConsumeCostToNewDistribution(consume, distribution);
 		addNewDistributionToDB(distribution);
 	}
 	
+	public void updateTotalFortune(Consume consume) {
+		TotalFortune totalFortune = totalFortuneManager.findUpToDateTotalFortune();
+		getNewTotalFortune(consume, totalFortune);
+		addNewTotalFortuneToDB(totalFortune);
+	}
+	public void addNewTotalFortuneToDB(TotalFortune totalFortune) {
+		totalFortuneManager.addTotalFortune(totalFortune);
+	}
+	public void getNewTotalFortune(Consume consume, TotalFortune totalFortune) {
+		updatePastCost(totalFortune);
+		updateTotalCost(consume, totalFortune);
+		updateRate(totalFortune);
+		updateFortune(totalFortune);
+		totalFortune.setDate(consume.getDate());
+	}
+	
+	public void updateFortune(TotalFortune totalFortune) {
+		String fortune = Integer.parseInt(totalFortune.getTotalIncome()) - Integer.parseInt(totalFortune.getTotalCost()) + "";
+		totalFortune.setFortune(fortune);
+	}
+	public void updateRate(TotalFortune totalFortune) {
+		String rate = Integer.parseInt(totalFortune.getTotalIncome()) / Integer.parseInt(totalFortune.getTotalCost()) + "";
+		totalFortune.setRate(rate + "%");
+	}
+	public void updateTotalCost(Consume consume, TotalFortune totalFortune) {
+		String totalCost = Integer.parseInt(consume.getCost()) + Integer.parseInt(totalFortune.getTotalCost()) + "";
+		totalFortune.setTotalCost(totalCost);
+	}
+	public void updatePastCost(TotalFortune totalFortune) {
+		totalFortune.setPastCost(totalFortune.getTotalCost());
+	}
 	public void addNewDistributionToDB(Distribution distribution) {
 		distributionManager.addDistribution(distribution);
 	}
 	
 	public void getNewDistribution(Consume consume,Distribution distribution) {
-		Distribution pastDistribution = distributionManager.findUpToDateDistributionByName(consume.getName());
-		wrapDistribution(distribution, pastDistribution);
-		addTwoDistribution(distribution, pastDistribution);
+		setConsumeCostToNewDistribution(consume, distribution);
+		setConsumeInfoToNewDistribution(consume, distribution);
 		setDistributionTotal(distribution);
 	}
 	
@@ -51,38 +79,38 @@ public class ConsumeExecute {
 		distribution.setWeixinWallet(pastDistribution.getWeixinWallet());
 	}
 	
-	public void addTwoDistribution(Distribution distribution,Distribution pastDistribution) {
-		if (distribution.getCrash() != null) {
-			int pastCrash = Integer.parseInt(pastDistribution.getCrash());
-			String newCrash = Integer.parseInt(distribution.getCrash()) + pastCrash + "";
-			distribution.setCrash(newCrash);
-		}
-		if (distribution.getAlipay() != null) {
-			int pastAlipay = Integer.parseInt(pastDistribution.getAlipay());
-			String newAlipay = Integer.parseInt(distribution.getAlipay()) + pastAlipay + "";
-			distribution.setAlipay(newAlipay);
-		}
-		if (distribution.getCard() != null) {
-			int pastCard = Integer.parseInt(pastDistribution.getCard());
-			String newCard = Integer.parseInt(distribution.getCard()) + pastCard + "";
-			distribution.setCard(newCard);
-		}
-		if (distribution.getQqWallet() != null) {
-			int pastQqWallet = Integer.parseInt(pastDistribution.getQqWallet());
-			String newQqWallet = Integer.parseInt(distribution.getQqWallet()) + pastQqWallet + "";
-			distribution.setQqWallet(newQqWallet);
-		}
-		if (distribution.getWeixinWallet() != null) {
-			int pastWeixinWallet = Integer.parseInt(pastDistribution.getWeixinWallet());
-			String newWeixinWallet = Integer.parseInt(distribution.getWeixinWallet()) + pastWeixinWallet + "";
-			distribution.setWeixinWallet(newWeixinWallet);
-		}
-		if (distribution.getFinancialProducts() != null) {
-			int pastFinancialProduct = Integer.parseInt(pastDistribution.getFinancialProducts());
-			String newFinancialProduct = Integer.parseInt(distribution.getFinancialProducts()) + pastFinancialProduct + "";
-			distribution.setFinancialProducts(newFinancialProduct);
-		}
-	}
+//	public void addConsumeCostToDistribution(Consume consume,Distribution pastDistribution) {
+//		if (distribution.getCrash() != null) {
+//			int pastCrash = Integer.parseInt(pastDistribution.getCrash());
+//			String newCrash = Integer.parseInt(distribution.getCrash()) + pastCrash + "";
+//			distribution.setCrash(newCrash);
+//		}
+//		if (distribution.getAlipay() != null) {
+//			int pastAlipay = Integer.parseInt(pastDistribution.getAlipay());
+//			String newAlipay = Integer.parseInt(distribution.getAlipay()) + pastAlipay + "";
+//			distribution.setAlipay(newAlipay);
+//		}
+//		if (distribution.getCard() != null) {
+//			int pastCard = Integer.parseInt(pastDistribution.getCard());
+//			String newCard = Integer.parseInt(distribution.getCard()) + pastCard + "";
+//			distribution.setCard(newCard);
+//		}
+//		if (distribution.getQqWallet() != null) {
+//			int pastQqWallet = Integer.parseInt(pastDistribution.getQqWallet());
+//			String newQqWallet = Integer.parseInt(distribution.getQqWallet()) + pastQqWallet + "";
+//			distribution.setQqWallet(newQqWallet);
+//		}
+//		if (distribution.getWeixinWallet() != null) {
+//			int pastWeixinWallet = Integer.parseInt(pastDistribution.getWeixinWallet());
+//			String newWeixinWallet = Integer.parseInt(distribution.getWeixinWallet()) + pastWeixinWallet + "";
+//			distribution.setWeixinWallet(newWeixinWallet);
+//		}
+//		if (distribution.getFinancialProducts() != null) {
+//			int pastFinancialProduct = Integer.parseInt(pastDistribution.getFinancialProducts());
+//			String newFinancialProduct = Integer.parseInt(distribution.getFinancialProducts()) + pastFinancialProduct + "";
+//			distribution.setFinancialProducts(newFinancialProduct);
+//		}
+//	}
 	
 	public void setConsumeInfoToNewDistribution(Consume consume,Distribution distribution) {
 		distribution.setName(consume.getName());
@@ -90,25 +118,30 @@ public class ConsumeExecute {
 	}
 	
 	public void setConsumeCostToNewDistribution(Consume consume,Distribution distribution) {
-		String cost = consume.getCost();
 		switch (consume.getCostWay()) {
 		case "crash":
-			distribution.setCrash(cost);
+			String newCrash = Integer.parseInt(consume.getCost()) + Integer.parseInt(distribution.getCrash()) + "";
+			distribution.setCrash(newCrash);
 			break;
 		case "alipay":
-			distribution.setAlipay(cost);
+			String newAlipay = Integer.parseInt(consume.getCost()) + Integer.parseInt(distribution.getAlipay()) + "";
+			distribution.setAlipay(newAlipay);
 			break;
 		case "card":
-			distribution.setCard(cost);
+			String newCard = Integer.parseInt(consume.getCost()) + Integer.parseInt(distribution.getCard()) + "";
+			distribution.setCard(newCard);
 			break;
 		case "qqWallet":
-			distribution.setQqWallet(cost);
+			String newQqWallet = Integer.parseInt(consume.getCost()) + Integer.parseInt(distribution.getQqWallet()) + "";
+			distribution.setQqWallet(newQqWallet);
 			break;
 		case "weixinWallet":
-			distribution.setWeixinWallet(cost);
+			String newWeixinWallet = Integer.parseInt(consume.getCost()) + Integer.parseInt(distribution.getWeixinWallet()) + "";
+			distribution.setWeixinWallet(newWeixinWallet);
 			break;
 		case "financialProducts":
-			distribution.setFinancialProducts(cost);
+			String newFinancialProduct = Integer.parseInt(consume.getCost()) + Integer.parseInt(distribution.getFinancialProducts()) + "";
+			distribution.setFinancialProducts(newFinancialProduct);
 			break;
 		default:
 			break;
@@ -118,17 +151,6 @@ public class ConsumeExecute {
 	public String getConsumeWay(Consume consume) {
 		String costWay = consume.getCostWay();
 		return costWay;
-	}
-	private String fortune;
-	private String totalCost;
-	private String totalIncome;
-	private String pastCost;
-	private String pastIncome;
-	private String rate;
-	private String date;
-	
-	public void updateTotalFortune(Consume consume,TotalFortune totalFortune) {
-		
 	}
 	
 	public void subConsumeCostFromFortune(String cost, TotalFortune totalFortune) {

@@ -29,5 +29,8 @@ public class TotalFortuneService {
 		return result;
 	}
 	
-	
+	public TotalFortune findUpToDateTotalFortune() {
+		TotalFortune totalFortune = totalFortuneManager.findUpToDateTotalFortune();
+		return totalFortune;
+	}
 }
