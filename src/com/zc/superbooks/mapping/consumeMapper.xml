@@ -6,6 +6,9 @@
     <select id="getAllConsume" resultType="Consume">
         select * from Consume
     </select>
+    <select id="getConsumeByName" parameterType="String" resultType="Consume">
+        select * from Consume where name = #{name}
+    </select>
     <insert id="addConsume">
 		insert into consume(name,identity,time,place,costWay,cost,purpose,description) values (#{name},#{identity},
 			#{time},#{place},#{costWay},#{cost},#{purpose},#{description})

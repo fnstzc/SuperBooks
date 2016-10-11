@@ -11,7 +11,6 @@ public class Consume {
 	private String description;
 	private String isNeed;
 	
-	
 	public String getName() {
 		return name;
 	}
@@ -42,7 +41,6 @@ public class Consume {
 	public void setCostWay(String costWay) {
 		this.costWay = costWay;
 	}
-	
 	public String getIsNeed() {
 		return isNeed;
 	}

@@ -30,9 +30,11 @@ public class ConsumeService {
 	
 	//获取要显示的数据信息
 	public List<Consume> getConsumeList() {
-		List<Consume> consumeList = consumeManager.getConsumeList();
+		List<Consume> consumeList = consumeManager.getAllConsumeList();
 		return consumeList;
 	}
 	
-	
+	public void getConsumePurposeData(String name) {
+		
+	}
 }

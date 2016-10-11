@@ -78,4 +78,15 @@ public class SuperBooksController {
 		return null;
 	}
 	
+	@RequestMapping("/analysisConsume")
+	public String analysisConsume (Model model) {
+		
+		return null;
+	}
+	
+	@RequestMapping("/analysisPersonalConsume")
+	public String analysisPersonalConsume (String name,Model model) {
+		consumeService.getConsumePurposeData(name);
+		return null;
+	}
 }

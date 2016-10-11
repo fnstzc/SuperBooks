@@ -81,6 +81,21 @@ if (theForm.project.value == ""){
 			</tr>
 			<tr>
 				<td class=forumrow>
+				用途：<select name="purpose">
+						<option>购物</option>
+						<option>购书</option>
+						<option>话费</option>
+						<option>狗粮</option>
+						<option>吃饭</option>
+						<option>地铁卡</option>
+						<option>聚餐</option>
+						<option>请客</option>
+						<option>车票</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td class=forumrow>
 					消费地点：<input type="text" name="place" />
 				</td>
 			</tr>
@@ -91,7 +106,7 @@ if (theForm.project.value == ""){
 			</tr>
 			<tr>
 				<td rowspan="2" class=forumrow>
-					具体说明：<textarea name="desc" cols="50" rows="8" id="message"></textarea>
+					具体说明：<textarea name="description" cols="50" rows="8" id="message"></textarea>
 				</td>
 			</tr>
 			<tr>
