@@ -2,26 +2,18 @@ package com.zc.superbooks.entity;
 
 public class Consume {
 	private String name;
-	private String identity;
 	private String date;
 	private String place;
 	private String costWay;
 	private String cost;
 	private String purpose;
 	private String description;
-	private String isNeed;
 	
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public String getIdentity() {
-		return identity;
-	}
-	public void setIdentity(String identity) {
-		this.identity = identity;
 	}
 	public String getDate() {
 		return date;
@@ -40,12 +32,6 @@ public class Consume {
 	}
 	public void setCostWay(String costWay) {
 		this.costWay = costWay;
-	}
-	public String getIsNeed() {
-		return isNeed;
-	}
-	public void setIsNeed(String isNeed) {
-		this.isNeed = isNeed;
 	}
 	public String getCost() {
 		return cost;

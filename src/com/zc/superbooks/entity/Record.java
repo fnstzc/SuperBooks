@@ -2,10 +2,10 @@ package com.zc.superbooks.entity;
 
 import java.sql.Date;
 
-public class Record {
+
+public class Record {	
 	private Date date;
 	private String name;
-	private String action;
 	private String operate;
 	private String money;
 	private String operateWay;
@@ -22,12 +22,6 @@ public class Record {
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public String getAction() {
-		return action;
-	}
-	public void setAction(String action) {
-		this.action = action;
 	}
 	public String getOperate() {
 		return operate;

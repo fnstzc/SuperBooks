@@ -1,34 +1,39 @@
 package com.zc.superbooks.bean;
 
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.xml.crypto.Data;
+
+import org.apache.ibatis.session.SqlSession;
+
+import com.zc.superbooks.dao.ConsumeDao;
+import com.zc.superbooks.dao.RecordDao;
 import com.zc.superbooks.entity.Consume;
+import com.zc.superbooks.entity.Record;
+import com.zc.superbooks.util.MybatisUtil;
 
 public class test {
 	
 	public static void main(String[] args) {
-		Set<Consume> consumeSet = new HashSet<>();
-		Consume consume1 = new Consume();
-		consume1.setCost("12");
-		consume1.setPurpose("book");
-		Consume consume2 = new Consume();
-		consume2.setCost("14");
-		consume2.setPurpose("shopping");
-		
-		consumeSet.add(consume1);
-		consumeSet.add(consume2);
-		
-		ConsumeCostBean ccb = new ConsumeCostBean();
-		List<ConsumeCostBean> consumeCostList = new ArrayList<ConsumeCostBean>();
-		for (Consume consume : consumeSet) {
-			ccb.setCost(Integer.parseInt(consume.getCost()));
-			consumeCostList.add(ccb);
-		}
-		for (ConsumeCostBean consumeCostBean : consumeCostList) {
-			System.out.println(consumeCostBean.getCost());
-		}
+		Record record = new Record();
+		record.setDate("2016-5-18");
+		SqlSession session = MybatisUtil.getSqlSession();
+		RecordDao RecordDao = session.getMapper(RecordDao.class);
+		RecordDao.addRecord(record);
+//		if (recordList == null || recordList.isEmpty()) {
+//			System.out.println("no data");
+//		} else {
+//			for (Record record : recordList) {
+//				System.out.println(record.getDate());
+//			}
+//		}
+		session.commit();
+		session.close();
 	}
 }

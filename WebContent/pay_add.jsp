@@ -62,18 +62,6 @@ if (theForm.project.value == ""){
 					type="button" value="请选择日期" name="time" />
 				</td>
 			</tr>
-			<tr bgcolor=ffffff>
-				<td class=forumrow>身份：
-					<select name="identity">
-						<option>请选择身份</option>
-						<option>爸爸</option>
-						<option>妈妈</option>
-						<option>儿子</option>
-						<option>女儿</option>
-						<option>robi</option>
-					</select>
-				</td>
-			</tr>
 			<tr>
 				<td class=forumrow>
 					金额：<input name="cost" type="text" size="10" maxlength="10"> (<span class="red">元</span>)
@@ -82,15 +70,15 @@ if (theForm.project.value == ""){
 			<tr>
 				<td class=forumrow>
 				用途：<select name="purpose">
-						<option>购物</option>
-						<option>购书</option>
-						<option>话费</option>
-						<option>狗粮</option>
-						<option>吃饭</option>
-						<option>地铁卡</option>
-						<option>聚餐</option>
-						<option>请客</option>
-						<option>车票</option>
+						<option value="shopping">购物</option>
+						<option value="book">购书</option>
+						<option value="communication">话费</option>
+						<option value="dog">狗粮</option>
+						<option value="food">吃饭</option>
+						<option value="traffic">交通</option>
+						<option value="party">聚餐</option>
+						<option value="treat">请客</option>
+						<option value="ticket">车票</option>
 					</select>
 				</td>
 			</tr>

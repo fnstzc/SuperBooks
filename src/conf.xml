@@ -5,6 +5,7 @@
 	<typeAlias alias="User" type="com.zc.superbooks.entity.User" />
 	<typeAlias alias="Consume" type="com.zc.superbooks.entity.Consume" />
 	<typeAlias alias="Income" type="com.zc.superbooks.entity.Income" />
+	<typeAlias alias="Record" type="com.zc.superbooks.entity.Record" />
 	<typeAlias alias="TotalFortune" type="com.zc.superbooks.entity.TotalFortune" />
 	<typeAlias alias="Distribution" type="com.zc.superbooks.entity.Distribution" />
 </typeAliases>
@@ -25,5 +26,6 @@
          <mapper resource="com/zc/superbooks/mapping/distributionMapper.xml"/>
          <mapper resource="com/zc/superbooks/mapping/incomeMapper.xml"/>
          <mapper resource="com/zc/superbooks/mapping/totalFortuneMapper.xml"/>
+         <mapper resource="com/zc/superbooks/mapping/recordMapper.xml"/>
     </mappers>
 </configuration>

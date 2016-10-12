@@ -2,10 +2,9 @@ package com.zc.superbooks.entity;
 
 public class Income {
 	private String name;
-	private String identity;
 	private String date;
 	private String incomeWay;
-	private String fortune;
+	private String money;
 	
 	public String getName() {
 		return name;
@@ -13,23 +12,17 @@ public class Income {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getIdentity() {
-		return identity;
-	}
-	public void setIdentity(String identity) {
-		this.identity = identity;
-	}
 	public String getIncomeWay() {
 		return incomeWay;
 	}
 	public void setIncomeWay(String incomeWay) {
 		this.incomeWay = incomeWay;
 	}
-	public String getFortune() {
-		return fortune;
+	public String getMoney() {
+		return money;
 	}
-	public void setFortune(String fortune) {
-		this.fortune = fortune;
+	public void setMoney(String money) {
+		this.money = money;
 	}
 	public String getDate() {
 		return date;
