@@ -15,7 +15,6 @@ import com.zc.superbooks.entity.TotalFortune;
 import com.zc.superbooks.manager.ConsumeManager;
 import com.zc.superbooks.manager.DistributionManager;
 import com.zc.superbooks.manager.TotalFortuneManager;
-import com.zc.superbooks.message.PurposeType;
 import com.zc.superbooks.util.CalculateUtil;
 
 @Service
@@ -27,8 +26,6 @@ public class ConsumeExecute {
 	@Autowired
 	TotalFortuneManager totalFortuneManager;
 	
-	private PurposeBean purposeBean = new PurposeBean();
-
 	public void updateDistribution(Consume consume) {
 		Distribution distribution = distributionManager
 				.findUpToDateDistributionByName(consume.getName());
@@ -224,42 +221,56 @@ public class ConsumeExecute {
 		}
 		return consumeCostList;
 	}
-
-	public void calculateConsumePurpose(String name) {
-		List<Consume> consumeList = consumeManager.getConsumeListByName(name);
-		for (Consume consume : consumeList) {
-			switch (consume.getPurpose()) {
+	
+	public PurposeBean calculateConsumePurpose(List<ConsumeCostBean> consumeCostList) {
+		//将消费用途的信息封装到这个Bean中去
+		PurposeBean purposeBean = new PurposeBean();
+		
+		if (consumeCostList.isEmpty() || consumeCostList == null) {
+			return null;
+		}
+		for (ConsumeCostBean consumeCost : consumeCostList) {
+			switch (consumeCost.getPurpose()) {
 			case "shopping":
-				purposeBean.setShopping(Integer.parseInt(consume.getCost()));
+				int shoppingData = purposeBean.getShopping() + consumeCost.getCost();
+				purposeBean.setShopping(shoppingData);
 				break;
 			case "book":
-
+				int bookData = purposeBean.getBook() + consumeCost.getCost();
+				purposeBean.setBook(bookData);
 				break;
 			case "communication":
-
+				int communicationData = purposeBean.getCommunication() + consumeCost.getCost();
+				purposeBean.setCommunication(communicationData);
 				break;
 			case "food":
-
+				int foodData = purposeBean.getFood() + consumeCost.getCost();
+				purposeBean.setFood(foodData);
 				break;
 			case "dog":
-
+				int dogData = purposeBean.getDog() + consumeCost.getCost();
+				purposeBean.setDog(dogData);
 				break;
 			case "traffic":
-
+				int trafficData = purposeBean.getTraffic() + consumeCost.getCost();
+				purposeBean.setTraffic(trafficData);
 				break;
 			case "ticket":
-
+				int ticketData = purposeBean.getTicket() + consumeCost.getCost();
+				purposeBean.setTicket(ticketData);
 				break;
 			case "treat":
-
+				int treatData = purposeBean.getTreat() + consumeCost.getCost();
+				purposeBean.setTreat(treatData);
 				break;
 			case "party":
-
+				int partyData = purposeBean.getParty() + consumeCost.getCost();
+				purposeBean.setParty(partyData);
 				break;
-
 			default:
 				break;
 			}
 		}
+		return purposeBean;
 	}
 }

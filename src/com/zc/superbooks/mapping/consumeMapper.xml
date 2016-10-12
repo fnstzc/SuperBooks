@@ -9,6 +9,18 @@
     <select id="getConsumeByName" parameterType="String" resultType="Consume">
         select * from Consume where name = #{name}
     </select>
+    <select id="getConsumeListByNameAndStartTime" parameterType="String" resultType="Consume">
+        select * from Consume where name = #{name} and date &gt; #{startTime}
+    </select>
+    <select id="getConsumeListByNameAndFinishTime" parameterType="String" resultType="Consume">
+        select * from Consume where name = #{name} and date &lt; #{finishTime}
+    </select>
+    <select id="getConsumeListByNameAndTimeBlock" parameterType="String" resultType="Consume">
+        select * from Consume where name = #{name} and date &gt; #{startTime} and date &lt; #{finishTime}
+    </select>
+    <select id="getConsumeListByNameAndDate" parameterType="String" resultType="Consume">
+        select * from Consume where name = #{name} and date = #{date}
+    </select>
     <insert id="addConsume">
 		insert into consume(name,identity,time,place,costWay,cost,purpose,description) values (#{name},#{identity},
 			#{time},#{place},#{costWay},#{cost},#{purpose},#{description})

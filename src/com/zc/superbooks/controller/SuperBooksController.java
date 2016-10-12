@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.zc.superbooks.bean.PurposeBean;
 import com.zc.superbooks.entity.Consume;
 import com.zc.superbooks.entity.Distribution;
 import com.zc.superbooks.entity.Income;
@@ -79,14 +80,14 @@ public class SuperBooksController {
 	}
 	
 	@RequestMapping("/analysisConsume")
-	public String analysisConsume (Model model) {
-		
+	public String analysisConsume (String startTime, String finishTime, Model model) {
 		return null;
 	}
 	
 	@RequestMapping("/analysisPersonalConsume")
-	public String analysisPersonalConsume (String name,Model model) {
-		consumeService.getConsumePurposeData(name);
-		return null;
+	public String analysisPersonalConsume (String name, String startTime, String finishTime, Model model) {
+		PurposeBean purposeBean = consumeService.getConsumePurposeData(name, startTime, finishTime);
+		model.addAttribute("purposeData", purposeBean);
+		return "display";
 	}
 }
